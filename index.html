@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My English Learning Blog | Software Development</title>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --gray-color: #95a5a6;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: #f9f9f9;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .header-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header-content p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .header-meta {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .header-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        nav {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: var(--dark-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        .nav-links a.active:after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark-color);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 2rem;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .intro {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        .intro h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .intro p {
+            margin-bottom: 1rem;
+        }
+
+        .evidence-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .evidence-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .evidence-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .evidence-title {
+            font-size: 1.4rem;
+            color: var(--dark-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .evidence-meta {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.9rem;
+            color: var(--gray-color);
+        }
+
+        .evidence-content {
+            padding: 1.5rem;
+        }
+
+        .evidence-content p {
+            margin-bottom: 1rem;
+        }
+
+        .audio-player {
+            background-color: #f5f5f5;
+            padding: 1rem;
+            border-radius: 4px;
+            margin: 1rem 0;
+        }
+
+        .audio-player audio {
+            width: 100%;
+        }
+
+        .forum-post {
+            background-color: #f5f5f5;
+            padding: 1rem;
+            border-radius: 4px;
+            margin: 1rem 0;
+            border-left: 3px solid var(--primary-color);
+        }
+
+        .forum-post p {
+            margin-bottom: 0.5rem;
+        }
+
+        .mind-map img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin: 1rem 0;
+        }
+
+        .evidence-actions {
+            padding: 1rem 1.5rem;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .about-me, .categories {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        .about-me h3, .categories h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .about-me-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .about-me-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary-color);
+        }
+
+        .category-list {
+            list-style: none;
+        }
+
+        .category-list li {
+            margin-bottom: 0.5rem;
+        }
+
+        .category-list a {
+            color: var(--dark-color);
+            text-decoration: none;
+            display: flex;
+            justify-content: space-between;
+            transition: var(--transition);
+        }
+
+        .category-list a:hover {
+            color: var(--primary-color);
+        }
+
+        .category-count {
+            background-color: var(--light-color);
+            border-radius: 20px;
+            padding: 0.2rem 0.5rem;
+            font-size: 0.8rem;
+        }
+
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 1.5rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #bdc3c7;
+        }
+
+        /* Dark mode toggle */
+        .dark-mode-toggle {
+            background: none;
+            border: none;
+            color: var(--dark-color);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .dark-mode-toggle:hover {
+            color: var(--primary-color);
+        }
+
+        /* Dark mode styles */
+        body.dark-mode {
+            background-color: #1a1a2e;
+            color: #e6e6e6;
+        }
+
+        body.dark-mode nav,
+        body.dark-mode .evidence-card,
+        body.dark-mode .intro,
+        body.dark-mode .about-me,
+        body.dark-mode .categories {
+            background-color: #16213e;
+            color: #e6e6e6;
+        }
+
+        body.dark-mode .nav-links a,
+        body.dark-mode .logo,
+        body.dark-mode .evidence-title {
+            color: #e6e6e6;
+        }
+
+        body.dark-mode .mobile-menu-btn,
+        body.dark-mode .dark-mode-toggle {
+            color: #e6e6e6;
+        }
+
+        body.dark-mode .audio-player,
+        body.dark-mode .forum-post {
+            background-color: #0f3460;
+        }
+
+        body.dark-mode .category-count {
+            background-color: #0f3460;
+        }
+
+        body.dark-mode .evidence-header,
+        body.dark-mode .evidence-actions {
+            border-color: #0f3460;
+        }
+
+        @media (max-width: 768px) {
+            main {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: white;
+                flex-direction: column;
+                padding: 1rem 2rem;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                display: none;
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            body.dark-mode .nav-links {
+                background-color: #16213e;
+            }
+        }
+
+        .language-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .language-toggle span {
+            cursor: pointer;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .language-toggle span.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .evidence-card {
+            animation: fadeIn 0.5s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>My English Learning Portfolio</h1>
+            <p>Software Analysis and Development Course</p>
+            <div class="header-meta">
+                <span><i class="fas fa-user"></i> Duvan Andres Moreno Salamanca</span>
+                <span><i class="fas fa-id-card"></i> ID: 1120872978</span>
+                <span><i class="fas fa-graduation-cap"></i> SENA - Ficha: 2834831</span>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">My Blog</a>
+            <div class="nav-links">
+                <a href="#" class="active">Home</a>
+                <a href="#audio-evidences">Audio Evidences</a>
+                <a href="#forum-evidences">Forum Evidences</a>
+                <a href="#mind-maps">Mind Maps</a>
+                <a href="#about">About</a>
+            </div>
+            <div class="nav-controls">
+                <div class="language-toggle">
+                    <span class="active">EN</span>
+                    <span>ES</span>
+                </div>
+                <button class="dark-mode-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="content">
+            <section class="intro">
+                <h2>Welcome to My English Learning Blog</h2>
+                <p>This blog consolidates and presents all the evidence of my work in English for the Software Analysis and Development Course at SENA. It includes audio recordings, forum posts, and visual materials that demonstrate my learning progress and language skills development.</p>
+                <p>Through this collection, I aim to showcase not only my technical knowledge but also my ability to communicate effectively in English within the context of software development and information technology.</p>
+            </section>
+
+            <section id="audio-evidences">
+                <div class="evidence-card">
+                    <div class="evidence-header">
+                        <h3 class="evidence-title">GA3-240202501-AA1-EV02 AUDIO</h3>
+                        <div class="evidence-meta">
+                            <span><i class="fas fa-calendar"></i> Marzo 2025</span>
+                            <span><i class="fas fa-tag"></i> Audio Evidence</span>
+                        </div>
+                    </div>
+                    <div class="evidence-content">
+                        <p>In this audio recording, I discuss my track record, plans, actions, and how I address problems in both academic and professional contexts using conditional sentences.</p>
+                        <div class="audio-player">
+                            <audio controls>
+                                <source src="audio/Audio GA3-240202501-AA1-EV02.mp3" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                        <p><strong>Transcript:</strong></p>
+                        <p>Good Afternoon, I am Duvan Andres Moreno Salamanca, belonging to tab two, eight, three, four,
+                            eight, three, one. and we are currently engaged in technology analysis and software
+                            development</p>
+                        My attitudes, beliefs and obligations in the work and academic context
+                        Regarding my attitudes and beliefs in the work and academic field, I firmly believe in the
+                        importance of responsibility and dedication. In my work context, I believe that I must be
+                        punctual and complete my assigned tasks in order to contribute effectively to the team.
+                        You must also be proactive in tackling challenges and creatively seeking solutions.
+                        In the academic field, we believe that it is essential to maintain an open and curious mind.
+                        I must make the most of learning opportunities and must be willing to ask questions and
+                        seek clarity when something is not clear. Also, I believe that I should set realistic but
+                        ambitious goals to reach my full academic potential.
+                        Regarding my obligations, I understand that I must comply with the established deadlines
+                        both at work and in studies. Also, I must respect the rules and regulations in both
+                        environments, since that contributes to the proper functioning and mutual respect.
+                        In summary, I believe that I must maintain a strong work ethic and a positive attitude in
+                        order to be successful in my work and academic responsibilities. I must strive to
+                        constantly improve and should be adaptable to changes in order to deal with challenges
+                        effectively.
+
+                    <div class="evidence-actions">
+                        <a href="#" class="btn btn-outline">Download Audio</a>
+                        <a href="#" class="btn">View Full Transcript</a>
+                    </div>
+                </div>
+
+                <div class="evidence-card">
+                    <div class="evidence-header">
+                        <h3 class="evidence-title">GA3-240202501-AA2-EV02-AUDIO</h3>
+                        <div class="evidence-meta">
+                            <span><i class="fas fa-calendar"></i> Marzo 2025</span>
+                            <span><i class="fas fa-tag"></i> Audio Evidence</span>
+                        </div>
+                    </div>
+                    <div class="evidence-content">
+                        <p>In this audio recording, I discuss my attitudes, beliefs, and obligations in both work and study contexts.</p>
+                        <div class="audio-player">
+                            <audio controls>
+                                <source src="audio/Audio GA3-240202501-AA2-EV02..mp3" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                        <p><strong>Transcript:</strong></p>
+                        <p>Hi, my name is Duvan Andres Moreno Salamanca. SENA’s student in the Analysis and
+Software Development’ career,  Instructor: Benjamin Alvarado and activity AUDIO. 
+I am a person who is focusing on the study of analysis and software development,
+with a recent career as a technical support analyst providing services and solutions
+for Internet, telephony and television failures and problems. The technical studies in
+systems have provided prior knowledge to provide solutions to software problems. I
+am currently acquiring more knowledge in the area of technology, and if I continue
+with this learning process, I will be able to aspire to a professional position in the
+area.
+Finally, I can say that if I graduate as a software analysis and development
+technologist at SENA, I will contribute as a programmer analyst in well-known
+companies.
+                    </div>
+                    <div class="evidence-actions">
+                        <a href="#" class="btn btn-outline">Download Audio</a>
+                        <a href="#" class="btn">View Full Transcript</a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="forum-evidences">
+                <div class="evidence-card">
+                    <div class="evidence-header">
+                        <h3 class="evidence-title">GA3-240202501-AA1-EV03-FORO</h3>
+                        <div class="evidence-meta">
+                            <span><i class="fas fa-calendar"></i> marzo, 2025</span>
+                            <span><i class="fas fa-tag"></i> Forum Post</span>
+                        </div>
+                    </div>
+                    <div class="evidence-content">
+                        <p>In this forum, I discussed environmental sustainability in the workplace and how companies can incentivize eco-friendly practices.</p>
+                        <div class="forum-post">
+                            <p><strong>1. How can You be environmentally friendly at work?</strong></p>
+                            <p>- To take care of the environment when we work it is not necessary to carry out great actions, but each one of us can contribute our grain of sand day by day. There are small gestures that help save water and energy resources, as well as the reuse of recyclable elements.</p>
+                            
+                            
+                            <p><strong>2. What kind of incentives could a green company offer to its employees?</strong></p>
+                            <p>- The implementation of informative talks and inductions on the care of the work environment, constantly to create customs about the good use of our natural resources.</p>
+                            
+                            
+                            <p><strong>3. In what other ways could businesses involve their employees in environmental issues?</strong></p>
+                            <p>It is no secret to anyone that human beings are sometimes driven to do things out of economic interest. My proposal to attack environmental pollution involves the implementation of recycling machines for objects that will no longer be used. And the company performs the final disposal of these objects in the wholesale or processing place.</p>
+                        </div>
+                    </div>
+                    <div class="evidence-actions">
+                        <a href="#" class="btn">View Original Forum</a>
+                    </div>
+                </div>
+
+                <div class="evidence-card">
+                    <div class="evidence-header">
+                        <h3 class="evidence-title">GA3-240202501-AA2-EV03-FORO</h3>
+                        <div class="evidence-meta">
+                            <span><i class="fas fa-calendar"></i> marzo, 2025</span>
+                            <span><i class="fas fa-tag"></i> Forum Post</span>
+                        </div>
+                    </div>
+                    <div class="evidence-content">
+                        <p>In this forum, I discussed adaptability and flexibility in the context of working with different clients in contractor companies.</p>
+                        <div class="forum-post">
+                            
+                            <p><strong>What was the result of the experience?</strong></p>
+                            <p>The result was to obtain work experience working as a shopkeeper, serving customers and selling food, cleaning products and personal hygiene.</p>
+                            
+                            <p><strong>How did your flexibility and adaptability help you to deal with the situation?</strong></p>
+                            <p>It helped me face the real world and gain experience from my work mistakes, since I learned many new things in commerce, where I was able to understand a large part of the sales system.</p>
+                            
+                            <p><strong>Would you change anything in order to deal in a better way with it?</strong></p>
+                            <p>I would change my defects such as indiscipline and irresponsibility in order to be more professional and face unexpected challenges or obstacles.</p>
+                        </div>
+                    </div>
+                    <div class="evidence-actions">
+                        <a href="#" class="btn">View Original Forum</a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="mind-maps">
+                <div class="evidence-card">
+                    <div class="evidence-header">
+                        <h3 class="evidence-title">GA4-240202501-AA1-EV02 MIND MAP ABOUT PLE</h3>
+                        <div class="evidence-meta">
+                            <span><i class="fas fa-calendar"></i> 2025</span>
+                            <span><i class="fas fa-tag"></i> Visual Material</span>
+                        </div>
+                    </div>
+                    <div class="evidence-content">
+                        <p>This mind map explores the concept of Personal Learning Environment (PLE) and its various components and applications in the educational context.</p>
+                        <div class="mind-map">
+                            <img src="imagenes/mapa.png" alt="Mind Map about Personal Learning Environment">
+                        </div>
+                        <p>The mind map illustrates key concepts related to Personal Learning Environments, including various tools and technologies, learning methodologies, characteristics of PLE, and practical applications in educational settings.</p>
+                    </div>
+                    <div class="evidence-actions">
+                        <a href="#" class="btn btn-outline">Download Mind Map</a>
+                        <a href="#" class="btn">View Full Size</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="sidebar">
+            <div class="about-me">
+                <h3>About Me</h3>
+                <div class="about-me-content">
+                    <img src="imagenes/perfil.jpg" alt="Profile Picture" class="about-me-avatar">
+                    <p>I'm Duvan Andres Moreno Salamanca, a Software Development student at SENA. I'm passionate about technology and constantly learning new skills to improve my professional profile.</p>
+                    <a href="#about" class="btn btn-outline">Learn More</a>
+                </div>
+            </div>
+
+            <div class="categories">
+                <h3>Evidence Categories</h3>
+                <ul class="category-list">
+                    <li>
+                        <a href="#audio-evidences">
+                            <span>Audio Recordings</span>
+                            <span class="category-count">2</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#forum-evidences">
+                            <span>Forum Posts</span>
+                            <span class="category-count">2</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#mind-maps">
+                            <span>Mind Maps</span>
+                            <span class="category-count">1</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Navigation</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#audio-evidences">Audio Evidences</a></li>
+                    <li><a href="#forum-evidences">Forum Evidences</a></li>
+                    <li><a href="#mind-maps">Mind Maps</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Course Information</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Software Analysis and Development</a></li>
+                    <li><a href="#">SENA - SofiaPlus</a></li>
+                    <li><a href="#">Instructor: Benjamin Alvarado</a></li>
+                    <li><a href="#">Ficha: 2834831</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul class="footer-links">
+                    <li><a href="mailto:example@example.com">Email</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                    <li><a href="#">GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Duvan Andres Moreno Salamanca. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
+        });
+
+        // Dark mode toggle
+        const darkModeToggle = document.querySelector('.dark-mode-toggle');
+        const body = document.body;
+        const icon = darkModeToggle.querySelector('i');
+
+        // Check for saved preference
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            body.classList.add('dark-mode');
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+        }
+
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            
+            // Update icon
+            if (body.classList.contains('dark-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        });
+
+        // Language translations
+        const translations = {
+            en: {
+                welcome: "Welcome to My English Learning Blog",
+                intro1: "This blog consolidates and presents all the evidence of my work in English for the Software Analysis and Development Course at SENA. It includes audio recordings, forum posts, and visual materials that demonstrate my learning progress and language skills development.",
+                intro2: "Through this collection, I aim to showcase not only my technical knowledge but also my ability to communicate effectively in English within the context of software development and information technology.",
+                home: "Home",
+                audioEvidences: "Audio Evidences",
+                forumEvidences: "Forum Evidences",
+                mindMaps: "Mind Maps",
+                about: "About",
+                aboutMe: "About Me",
+                aboutMeText: "I'm Brayan Anibal Miranda Perea, a Software Development student at SENA. I'm passionate about technology and constantly learning new skills to improve my professional profile.",
+                learnMore: "Learn More",
+                evidenceCategories: "Evidence Categories",
+                audioRecordings: "Audio Recordings",
+                forumPosts: "Forum Posts",
+                download: "Download",
+                viewFull: "View Full",
+                transcript: "Transcript:",
+                navigation: "Navigation",
+                courseInfo: "Course Information",
+                contact: "Contact",
+                copyright: "All rights reserved."
+            },
+            es: {
+                welcome: "Bienvenido a Mi Blog de Aprendizaje de Inglés",
+                intro1: "Este blog consolida y presenta todas las evidencias de mi trabajo en inglés para el Curso de Análisis y Desarrollo de Software en el SENA. Incluye grabaciones de audio, publicaciones en foros y materiales visuales que demuestran mi progreso de aprendizaje y desarrollo de habilidades lingüísticas.",
+                intro2: "A través de esta colección, pretendo mostrar no solo mi conocimiento técnico sino también mi capacidad para comunicarme eficazmente en inglés en el contexto del desarrollo de software y la tecnología de la información.",
+                home: "Inicio",
+                audioEvidences: "Evidencias de Audio",
+                forumEvidences: "Evidencias de Foro",
+                mindMaps: "Mapas Mentales",
+                about: "Acerca de",
+                aboutMe: "Sobre Mí",
+                aboutMeText: "Soy Brayan Anibal Miranda Perea, estudiante de Desarrollo de Software en el SENA. Me apasiona la tecnología y estoy constantemente aprendiendo nuevas habilidades para mejorar mi perfil profesional.",
+                learnMore: "Conocer Más",
+                evidenceCategories: "Categorías de Evidencias",
+                audioRecordings: "Grabaciones de Audio",
+                forumPosts: "Publicaciones en Foro",
+                download: "Descargar",
+                viewFull: "Ver Completo",
+                transcript: "Transcripción:",
+                navigation: "Navegación",
+                courseInfo: "Información del Curso",
+                contact: "Contacto",
+                copyright: "Todos los derechos reservados."
+            }
+        };
+        
+        // Function to update page content based on selected language
+        function updateLanguage(lang) {
+            // Save language preference
+            localStorage.setItem('language', lang);
+            
+            // Update welcome section
+            document.querySelector('.intro h2').textContent = translations[lang].welcome;
+            const introParagraphs = document.querySelectorAll('.intro p');
+            introParagraphs[0].textContent = translations[lang].intro1;
+            introParagraphs[1].textContent = translations[lang].intro2;
+            
+            // Update navigation
+            const navLinks = document.querySelectorAll('.nav-links a');
+            navLinks[0].textContent = translations[lang].home;
+            navLinks[1].textContent = translations[lang].audioEvidences;
+            navLinks[2].textContent = translations[lang].forumEvidences;
+            navLinks[3].textContent = translations[lang].mindMaps;
+            navLinks[4].textContent = translations[lang].about;
+            
+            // Update sidebar
+            document.querySelector('.about-me h3').textContent = translations[lang].aboutMe;
+            document.querySelector('.about-me-content p').textContent = translations[lang].aboutMeText;
+            document.querySelector('.about-me-content .btn').textContent = translations[lang].learnMore;
+            
+            document.querySelector('.categories h3').textContent = translations[lang].evidenceCategories;
+            document.querySelectorAll('.category-list a span')[0].textContent = translations[lang].audioRecordings;
+            document.querySelectorAll('.category-list a span')[2].textContent = translations[lang].forumPosts;
+            
+            // Update buttons
+            document.querySelectorAll('.btn-outline').forEach(btn => {
+                if (btn.textContent.includes('Download')) {
+                    btn.textContent = translations[lang].download;
+                }
+            });
+            
+            // Update footer
+            document.querySelectorAll('.footer-column h3')[0].textContent = translations[lang].navigation;
+            document.querySelectorAll('.footer-column h3')[1].textContent = translations[lang].courseInfo;
+            document.querySelectorAll('.footer-column h3')[2].textContent = translations[lang].contact;
+            
+            // Update copyright
+            const copyrightText = document.querySelector('.footer-bottom p');
+            copyrightText.textContent = `© 2023 Brayan Anibal Miranda Perea. ${translations[lang].copyright}`;
+        }
+        
+        // Language toggle event listeners
+        const languageToggle = document.querySelectorAll('.language-toggle span');
+        
+        languageToggle.forEach(lang => {
+            lang.addEventListener('click', () => {
+                // Remove active class from all language options
+                languageToggle.forEach(l => l.classList.remove('active'));
+                
+                // Add active class to clicked language
+                lang.classList.add('active');
+                
+                // Update language
+                const selectedLang = lang.textContent.toLowerCase();
+                if (selectedLang === 'en' || selectedLang === 'es') {
+                    updateLanguage(selectedLang);
+                }
+            });
+        });
+        
+        // Check for saved language preference
+        const savedLanguage = localStorage.getItem('language');
+        if (savedLanguage) {
+            // Set the correct toggle as active
+            languageToggle.forEach(l => {
+                l.classList.remove('active');
+                if (l.textContent.toLowerCase() === savedLanguage) {
+                    l.classList.add('active');
+                }
+            });
+            
+            // Update the language
+            updateLanguage(savedLanguage);
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    
+                    // Close mobile menu if open
+                    navLinks.classList.remove('show');
+                }
+            });
+        });
+
+        // Add active class to nav links based on scroll position
+        const sections = document.querySelectorAll('section');
+        const navItems = document.querySelectorAll('.nav-links a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                const href = item.getAttribute('href').substring(1);
+                if (href === current) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Add Font Awesome icons
+        // Since we're not loading the actual Font Awesome library in this demo,
+        // we'll create a simple function to replace the icons with text
+        document.querySelectorAll('.fas').forEach(icon => {
+            const className = icon.className;
+            
+            if (className.includes('fa-user')) {
+                icon.textContent = '👤 ';
+            } else if (className.includes('fa-id-card')) {
+                icon.textContent = '🆔 ';
+            } else if (className.includes('fa-graduation-cap')) {
+                icon.textContent = '🎓 ';
+            } else if (className.includes('fa-calendar')) {
+                icon.textContent = '📅 ';
+            } else if (className.includes('fa-tag')) {
+                icon.textContent = '🏷️ ';
+            } else if (className.includes('fa-moon')) {
+                icon.textContent = '🌙 ';
+            } else if (className.includes('fa-sun')) {
+                icon.textContent = '☀️ ';
+            } else if (className.includes('fa-bars')) {
+                icon.textContent = '☰ ';
+            }
+            
+            icon.classList.remove('fas', 'fa-user', 'fa-id-card', 'fa-graduation-cap', 
+                                'fa-calendar', 'fa-tag', 'fa-moon', 'fa-sun', 'fa-bars');
+        });
+
+        // Animation on scroll
+        const evidenceCards = document.querySelectorAll('.evidence-card');
+        const animateOnScroll = entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeIn 0.5s ease-out forwards';
+                } else {
+                    entry.target.style.animation = 'none';
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(animateOnScroll, {
+            root: null,
+            threshold: 0.1
+        });
+
+        evidenceCards.forEach(card => {
+            observer.observe(card);
+        });
